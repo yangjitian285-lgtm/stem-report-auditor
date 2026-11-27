@@ -1,0 +1,5 @@
+-r requirements.txt
+pytest>=7.4
+# 任意（あれば docx テストで追加検証）
+python-docx>=1.1
+lxml>=4.9

@@ -1,0 +1,4 @@
+# 任意：PDFを直接読む
+pypdf>=4.0
+# 任意：ローカルの日本語文埋め込み（--provider st）。初回にモデルをダウンロードします
+sentence-transformers>=2.7
