@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STEM Report Auditor</title>
+<style>
+:root{
+  --bg:#f6f7f9; --panel:#ffffff; --ink:#1d2330; --muted:#677084; --line:#e2e5ea;
+  --accent:#3b5bdb; --accent-ink:#ffffff; --soft:#eef2ff;
+  --crit:#d6336c; --crit-bg:#fdecf2; --warn:#c77700; --warn-bg:#fff4e0;
+  --info:#1c7ed6; --info-bg:#e7f2fd; --pass:#2b8a3e; --pass-bg:#e9f7ec;
+  --radius:12px; --shadow:0 1px 2px rgba(20,30,50,.06),0 4px 16px rgba(20,30,50,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#13161c; --panel:#1b1f27; --ink:#e7eaf0; --muted:#98a1b3; --line:#2b313c;
+    --accent:#748ffc; --accent-ink:#0f1320; --soft:#232a3d;
+    --crit:#f06595; --crit-bg:#3a1f2b; --warn:#ffc078; --warn-bg:#3a2d17;
+    --info:#74c0fc; --info-bg:#182c3e; --pass:#69db7c; --pass-bg:#183022;
+    --shadow:none;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 system-ui,-apple-system,"Segoe UI","Hiragino Sans","Yu Gothic UI","Meiryo",sans-serif}
+header{background:var(--panel);border-bottom:1px solid var(--line)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.top{display:flex;align-items:center;gap:14px;padding:16px 0 0}
+.logo{width:34px;height:34px;border-radius:9px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:700}
+h1{font-size:18px;margin:0}
+.sub{color:var(--muted);font-size:13px}
+.local{margin-left:auto;font-size:12px;color:var(--pass);background:var(--pass-bg);padding:4px 10px;border-radius:99px;white-space:nowrap}
+nav{display:flex;gap:4px;margin-top:12px;overflow-x:auto}
+nav button{border:0;background:none;color:var(--muted);font:inherit;font-weight:600;padding:10px 14px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap}
+nav button.on{color:var(--ink);border-bottom-color:var(--accent)}
+main.wrap{padding-top:24px;padding-bottom:60px}
+.tab{display:none}.tab.on{display:block}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;margin-bottom:16px}
+.card h2{font-size:16px;margin:0 0 4px}
+.hint{color:var(--muted);font-size:13px;margin:0 0 14px}
+.drop{border:2px dashed var(--line);border-radius:var(--radius);padding:30px 16px;text-align:center;cursor:pointer;transition:.15s}
+.drop:hover,.drop.over{border-color:var(--accent);background:var(--soft)}
+.drop strong{display:block;font-size:16px}
+.drop .fname{margin-top:8px;color:var(--accent);font-weight:600}
+textarea,input[type=text]{width:100%;font:13px/1.55 ui-monospace,SFMono-Regular,Consolas,"BIZ UDGothic",monospace;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px}
+textarea.prose{font:14px/1.7 inherit;font-family:inherit}
+label.lbl{display:block;font-weight:600;font-size:13px;margin:14px 0 6px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}
+.btn{border:0;border-radius:8px;background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:700;padding:10px 18px;cursor:pointer}
+.btn:disabled{opacity:.5;cursor:wait}
+.btn.ghost{background:var(--soft);color:var(--accent)}
+.err{color:var(--crit);background:var(--crit-bg);border-radius:8px;padding:10px 12px;margin-top:12px;display:none}
+.spin{display:none;color:var(--muted)}
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:6px}
+.kpi{background:var(--bg);border-radius:10px;padding:12px 14px}
+.kpi .k{font-size:12px;color:var(--muted)}
+.kpi .v{font-size:26px;font-weight:700;font-variant-numeric:tabular-nums}
+.kpi .v small{font-size:13px;color:var(--muted);font-weight:500}
+.grade{font-weight:700;font-size:15px;margin:10px 0 2px}
+.note{color:var(--muted);font-size:13px}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 12px}
+.chip{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:99px;padding:4px 12px;font:inherit;font-size:13px;cursor:pointer}
+.chip.on{background:var(--ink);color:var(--panel);border-color:var(--ink)}
+.f{border-left:4px solid var(--line);padding:10px 12px;border-radius:0 8px 8px 0;margin-bottom:8px;background:var(--bg)}
+.f .h{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.tag{font-size:11px;font-weight:700;padding:1px 8px;border-radius:99px}
+.CRITICAL{border-left-color:var(--crit)} .CRITICAL .tag{background:var(--crit-bg);color:var(--crit)}
+.WARNING{border-left-color:var(--warn)} .WARNING .tag{background:var(--warn-bg);color:var(--warn)}
+.INFO{border-left-color:var(--info)} .INFO .tag{background:var(--info-bg);color:var(--info)}
+.PASS{border-left-color:var(--pass)} .PASS .tag{background:var(--pass-bg);color:var(--pass)}
+.loc{font-size:12px;color:var(--muted)}
+.sugg{font-size:13px;color:var(--muted);margin-top:2px}
+.rel{display:inline-block;background:var(--soft);color:var(--ink);border-radius:8px;padding:4px 10px;margin:0 6px 6px 0;font-size:13px}
+.tblwrap{overflow-x:auto;margin-top:8px}
+table.data{border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:14px}
+table.data th,table.data td{border:1px solid var(--line);padding:6px 10px;text-align:right;white-space:nowrap}
+table.data th{background:var(--bg);text-align:center}
+table.data td.bad{background:var(--crit-bg);color:var(--crit);font-weight:700}
+table.data td.warn{background:var(--warn-bg);color:var(--warn);font-weight:700}
+table.data td.rowno{color:var(--muted);text-align:center}
+.claim{padding:8px 10px;border-radius:8px;margin-bottom:6px;font-size:14px}
+.claim.RED{background:var(--crit-bg)} .claim.YELLOW{background:var(--warn-bg)} .claim.GREEN{background:var(--pass-bg)}
+.claim small{color:var(--muted)}
+ol.check{padding-left:20px;margin:0} ol.check li{margin-bottom:6px}
+.empty{color:var(--muted);text-align:center;padding:10px}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:20px}
+@media (max-width:600px){.wrap{padding:0 16px}.local{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="top">
+      <div class="logo">Σ</div>
+      <div><h1>STEM Report Auditor</h1><div class="sub">理系レポートの検算・矛盾チェック・独自性診断</div></div>
+      <div class="local">● このパソコンの中だけで処理（外部送信なし）</div>
+    </div>
+    <nav>
+      <button class="on" data-tab="audit">レポートを監査</button>
+      <button data-tab="table">表を検算</button>
+      <button data-tab="score">独自性を診断</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- 監査 -->
+  <section class="tab on" id="tab-audit">
+    <div class="card">
+      <h2>Word / PDF のレポートをまるごと監査</h2>
+      <p class="hint">表の検算、表と本文の矛盾、有効数字、誤記、テンプレの消し忘れ、未回答を調べます。元のファイルは変更しません。</p>
+      <div class="drop" id="drop-audit"><strong>ここにファイルをドラッグ＆ドロップ</strong>またはクリックして選ぶ（.docx / .pdf / .txt）<div class="fname" id="fname-audit"></div></div>
+      <input type="file" id="file-audit" accept=".docx,.pdf,.txt,.md" hidden>
+      <div class="row"><button class="btn" id="go-audit" disabled>監査する</button><span class="spin" id="spin-audit">調べています…</span></div>
+      <div class="err" id="err-audit"></div>
+    </div>
+    <div id="out-audit"></div>
+  </section>
+
+  <!-- 表 -->
+  <section class="tab" id="tab-table">
+    <div class="card">
+      <h2>どんな実験の表でも検算</h2>
+      <p class="hint">Excel やWordの表をコピーして、そのまま貼り付けてください。1行目は見出しにします。列どうしの式を数値から推定し、合わない行を赤で示します。</p>
+      <textarea id="table-text" rows="9" placeholder="例）&#10;V (V)	I (mA)	P (mW)&#10;1.00	10.2	10.2&#10;2.00	20.5	41.0&#10;3.00	30.1	90.3&#10;4.00	40.8	136&#10;5.00	50.9	255"></textarea>
+      <div class="row">
+        <button class="btn" id="go-table">検算する</button>
+        <button class="btn ghost" id="sample-table">例を入れる</button>
+        <label class="btn ghost" style="font-weight:600">CSVを開く<input type="file" id="file-table" accept=".csv,.tsv,.txt,.md" hidden></label>
+        <span class="spin" id="spin-table">計算しています…</span>
+      </div>
+      <div class="err" id="err-table"></div>
+    </div>
+    <div id="out-table"></div>
+  </section>
+
+  <!-- 独自性 -->
+  <section class="tab" id="tab-score">
+    <div class="card">
+      <h2>「量産型AIの回答」とどれだけ被っているか</h2>
+      <p class="hint">同じ課題を ChatGPT などに3〜5回答えさせ、その回答を比較用に貼ってください。原稿がそれらとどれだけ似ているかを文ごとに調べます。この点数は参考値です（人の評価との一致はまだ検証していません）。</p>
+      <label class="lbl" for="score-task">課題文</label>
+      <textarea id="score-task" class="prose" rows="3" placeholder="例）生成AIの普及が大学生の学びに与える影響について論じなさい。"></textarea>
+      <label class="lbl" for="score-draft">あなたの原稿</label>
+      <textarea id="score-draft" class="prose" rows="8"></textarea>
+      <label class="lbl" for="score-cohort">比較用のAI回答（3つ以上。回答と回答の間に「---」だけの行を入れる）</label>
+      <textarea id="score-cohort" class="prose" rows="8" placeholder="1つ目の回答&#10;---&#10;2つ目の回答&#10;---&#10;3つ目の回答"></textarea>
+      <div class="row">
+        <label class="note"><input type="checkbox" id="score-st"> 日本語モデルで精度を上げる（初回に数百MBダウンロード・要 requirements-optional）</label>
+      </div>
+      <div class="row"><button class="btn" id="go-score">診断する</button><span class="spin" id="spin-score">診断しています…</span></div>
+      <div class="err" id="err-score"></div>
+    </div>
+    <div id="out-score"></div>
+  </section>
+</main>
+<footer>STEM Report Auditor ・ 結果は自動チェックです。最終的な判断は自分で確かめてください。実在しないデータを書くことは捏造です。</footer>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt = (v, d=1) => (v === null || v === undefined) ? "N/A" : Number(v).toFixed(d);
+const SEV_JA = {CRITICAL:"重大", WARNING:"注意", INFO:"参考", PASS:"OK"};
+
+document.querySelectorAll("nav button").forEach(b => b.onclick = () => {
+  document.querySelectorAll("nav button").forEach(x => x.classList.toggle("on", x === b));
+  document.querySelectorAll(".tab").forEach(t => t.classList.toggle("on", t.id === "tab-" + b.dataset.tab));
+  try { localStorage.setItem("sra_tab", b.dataset.tab); } catch (e) {}
+});
+try { const t = localStorage.getItem("sra_tab"); if (t) document.querySelector(`nav button[data-tab="${t}"]`)?.click(); } catch (e) {}
+
+async function post(url, body, key) {
+  const btn = $("#go-" + key), spin = $("#spin-" + key), err = $("#err-" + key);
+  btn.disabled = true; spin.style.display = "inline"; err.style.display = "none";
+  try {
+    const r = await fetch(url, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(body)});
+    const j = await r.json();
+    if (!r.ok) throw new Error(j.error || ("エラー " + r.status));
+    return j;
+  } catch (e) {
+    err.textContent = e.message.includes("Failed to fetch") ? "アプリとの接続が切れました。黒いウィンドウ（起動画面）が開いたままか確認してください。" : e.message;
+    err.style.display = "block";
+    return null;
+  } finally { btn.disabled = false; spin.style.display = "none"; }
+}
+
+function openHtml(html) {
+  const url = URL.createObjectURL(new Blob([html], {type:"text/html"}));
+  window.open(url, "_blank");
+}
+function findingsBlock(list, id) {
+  const counts = {CRITICAL:0, WARNING:0, INFO:0, PASS:0};
+  list.forEach(f => counts[f.severity] = (counts[f.severity] || 0) + 1);
+  const chips = ["ALL","CRITICAL","WARNING","INFO","PASS"].map(s =>
+    `<button class="chip ${s==="ALL"?"on":""}" data-f="${s}">${s==="ALL"?"すべて":SEV_JA[s]} ${s==="ALL"?list.length:counts[s]}</button>`).join("");
+  const items = list.map(f => `<div class="f ${f.severity}" data-sev="${f.severity}">
+      <div class="h"><span class="tag">${SEV_JA[f.severity]||f.severity}</span><span class="loc">${esc(f.location || (f.row ? "行"+f.row : "") + (f.column ? " "+f.column : ""))}</span></div>
+      <div>${esc(f.message)}</div>${f.suggestion ? `<div class="sugg">→ ${esc(f.suggestion)}</div>` : ""}</div>`).join("") || `<div class="empty">指摘はありません</div>`;
+  setTimeout(() => {
+    document.querySelectorAll(`#${id} .chip`).forEach(c => c.onclick = () => {
+      document.querySelectorAll(`#${id} .chip`).forEach(x => x.classList.toggle("on", x === c));
+      document.querySelectorAll(`#${id} .f`).forEach(el => el.style.display = (c.dataset.f === "ALL" || el.dataset.sev === c.dataset.f) ? "" : "none");
+    });
+  });
+  return `<div id="${id}"><div class="filters">${chips}</div>${items}</div>`;
+}
+
+/* ---------- 監査 ---------- */
+let auditFile = null;
+const dropA = $("#drop-audit"), fileA = $("#file-audit");
+dropA.onclick = () => fileA.click();
+fileA.onchange = () => setAuditFile(fileA.files[0]);
+["dragenter","dragover"].forEach(e => dropA.addEventListener(e, ev => { ev.preventDefault(); dropA.classList.add("over"); }));
+["dragleave","drop"].forEach(e => dropA.addEventListener(e, ev => { ev.preventDefault(); dropA.classList.remove("over"); }));
+dropA.addEventListener("drop", ev => setAuditFile(ev.dataTransfer.files[0]));
+function setAuditFile(f) { if (!f) return; auditFile = f; $("#fname-audit").textContent = f.name; $("#go-audit").disabled = false; }
+$("#go-audit").onclick = async () => {
+  if (!auditFile) return;
+  const b64 = await new Promise((ok, ng) => { const r = new FileReader(); r.onload = () => ok(r.result.split(",")[1]); r.onerror = ng; r.readAsDataURL(auditFile); });
+  const j = await post("/api/audit", {filename: auditFile.name, content_b64: b64}, "audit");
+  if (!j) return;
+  const crit = j.findings.filter(f => f.severity === "CRITICAL").length, warn = j.findings.filter(f => f.severity === "WARNING").length;
+  $("#out-audit").innerHTML = `
+    <div class="card">
+      <h2>${esc(j.filename)}</h2>
+      <div class="grade">${esc(j.overall_grade)}</div>
+      <p class="note">${j.is_stem_report ? "理系実験レポートと判定" : "理系実験レポートではないと判定"}${j.detected_profiles.length ? "（" + esc(j.detected_profiles.join("・")) + "）" : ""} ／ 表 ${j.tables} 個 ／ 実行した検査 ${j.checks_run} 件</p>
+      <div class="score">
+        <div class="kpi"><div class="k">総合</div><div class="v">${fmt(j.overall_score)}<small> /100</small></div></div>
+        <div class="kpi"><div class="k">計算・形式の正確さ</div><div class="v">${fmt(j.deterministic_score)}<small> /100</small></div></div>
+        <div class="kpi"><div class="k">考察</div><div class="v">${fmt(j.discussion_score)}<small> /100</small></div></div>
+        <div class="kpi"><div class="k">重大 ／ 注意</div><div class="v">${crit}<small> 件</small> ／ ${warn}<small> 件</small></div></div>
+      </div>
+      ${j.discussion_note ? `<p class="note">※ ${esc(j.discussion_note)}</p>` : ""}
+      <div class="row"><button class="btn ghost" id="open-audit">グラフ付きの詳細レポートを開く</button></div>
+    </div>
+    <div class="card"><h2>提出前に直すこと（優先順）</h2>${j.checklist.length ? `<ol class="check">${j.checklist.map(c => `<li>${esc(c)}</li>`).join("")}</ol>` : `<div class="empty">直すべき点は見つかりませんでした</div>`}</div>
+    <div class="card"><h2>すべての検査結果</h2>${findingsBlock(j.findings, "fa")}</div>`;
+  $("#open-audit").onclick = () => openHtml(j.report_html);
+};
+
+/* ---------- 表 ---------- */
+const SAMPLE = "V (V)\tI (mA)\tR (Ω)\tP (mW)\n1.00\t10.2\t98.0\t10.2\n2.00\t20.5\t97.6\t41.0\n3.00\t30.1\t99.7\t90.3\n4.00\t40.8\t98.0\t136\n5.00\t50.9\t89.2\t255";
+$("#sample-table").onclick = () => { $("#table-text").value = SAMPLE; };
+$("#file-table").onchange = (e) => { const f = e.target.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => { $("#table-text").value = r.result; }; r.readAsText(f); };
+try { const d = localStorage.getItem("sra_table"); if (d) $("#table-text").value = d; } catch (e) {}
+$("#go-table").onclick = async () => {
+  const text = $("#table-text").value;
+  try { localStorage.setItem("sra_table", text); } catch (e) {}
+  const j = await post("/api/table", {text}, "table");
+  if (!j) return;
+  const issues = j.findings.filter(f => f.severity !== "PASS");
+  const mark = {};
+  issues.forEach(f => { if (f.row && f.column) { const k = f.row + "|" + f.column; const lvl = (f.severity === "CRITICAL" || f.severity === "WARNING") ? "bad" : "warn"; if (mark[k] !== "bad") mark[k] = lvl; } });
+  const head = `<tr><th>行</th>${j.headers.map(h => `<th>${esc(h)}</th>`).join("")}</tr>`;
+  const body = j.rows.map((r, i) => `<tr><td class="rowno">${i+1}</td>${j.headers.map((h, c) => `<td class="${mark[(i+1)+"|"+h] || ""}">${esc(r[c] ?? "")}</td>`).join("")}</tr>`).join("");
+  const nBad = issues.filter(f => f.severity === "CRITICAL" || f.severity === "WARNING").length;
+  $("#out-table").innerHTML = `
+    <div class="card">
+      <h2>${nBad ? `合わない箇所が ${nBad} 件あります` : (j.relations.length ? "計算はすべて合っています" : "計算の関係は見つかりませんでした")}</h2>
+      <p class="hint">${j.relations.length ? "数値から推定した式で検算しました。" : "測定値だけの表か、行数が少なすぎると式を推定できません（3行以上必要です）。"}</p>
+      ${j.relations.map(r => `<span class="rel"><b>${esc(r.target)}</b> = ${esc(r.formula)} <small>（${r.matched_rows}/${r.checked_rows}行一致）</small></span>`).join("")}
+      <div class="tblwrap"><table class="data">${head}${body}</table></div>
+    </div>
+    <div class="card"><h2>指摘</h2>${findingsBlock(issues, "ft")}</div>`;
+};
+
+/* ---------- 独自性 ---------- */
+["score-task","score-draft","score-cohort"].forEach(id => { try { const v = localStorage.getItem("sra_" + id); if (v) $("#" + id).value = v; } catch (e) {} });
+$("#go-score").onclick = async () => {
+  const body = {task: $("#score-task").value, draft: $("#score-draft").value, cohort: $("#score-cohort").value, provider: $("#score-st").checked ? "st" : "local"};
+  ["score-task","score-draft","score-cohort"].forEach(id => { try { localStorage.setItem("sra_" + id, $("#" + id).value); } catch (e) {} });
+  const j = await post("/api/score", body, "score");
+  if (!j) return;
+  const q = j.quality_scores || {};
+  $("#out-score").innerHTML = `
+    <div class="card">
+      <h2>判定：${esc(j.grade)}</h2>
+      <p class="note">比較したAI回答 ${j.cohort_size} 件。独自性と品質は別々に見てください。</p>
+      <div class="score">
+        <div class="kpi"><div class="k">独自性（参考値）</div><div class="v">${fmt(j.uniqueness_score)}<small> /100</small></div></div>
+        <div class="kpi"><div class="k">課題への適合</div><div class="v">${fmt((j.relevance_gate||0)*100,0)}<small> %</small></div></div>
+        <div class="kpi"><div class="k">論理のつながり</div><div class="v">${fmt(q.coherence)}<small> /100</small></div></div>
+      </div>
+      ${(j.quality_flags||[]).map(f => `<p class="note">! ${esc(f)}</p>`).join("")}
+      <div class="row"><button class="btn ghost" id="open-score">グラフ付きの詳細レポートを開く</button></div>
+    </div>
+    <div class="card"><h2>文ごとの被り具合</h2><p class="hint">赤：AI回答とほぼ同じ主張 ／ 黄：要注意 ／ 緑：独自の視点</p>
+      ${j.claims.map(c => `<div class="claim ${c.status}">${esc(c.text)} <small>（AI回答の ${Math.round(c.overlap*100)}% と被り）</small></div>`).join("")}</div>
+    ${(j.verification_needed||[]).length ? `<div class="card"><h2>根拠を確かめてほしい記述</h2><p class="hint">ツールは内容の真偽を判定できません。数値や調査の出典を自分で確認してください。</p>${j.verification_needed.map(v => `<div class="f INFO"><div>${esc(v.text)}</div><div class="sugg">${esc(v.reason)}</div></div>`).join("")}</div>` : ""}
+    <div class="card"><h2>被りを減らすヒント</h2><ol class="check">${j.suggestions.map(s => `<li>${esc(s)}</li>`).join("")}</ol></div>`;
+  $("#open-score").onclick = () => openHtml(j.report_html);
+};
+</script>
+</body>
+</html>
