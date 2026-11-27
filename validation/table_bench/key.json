@@ -1,0 +1,478 @@
+[
+ {
+  "kind": "lastdigit",
+  "row": 5,
+  "col": "T (K)",
+  "id": 1,
+  "template": "t_temp"
+ },
+ {
+  "kind": "unit10",
+  "row": 2,
+  "col": "g (m/s²)",
+  "id": 2,
+  "template": "t_freefall"
+ },
+ {
+  "kind": "transpose",
+  "row": 1,
+  "col": "P (mW)",
+  "id": 3,
+  "template": "t_ohm"
+ },
+ {
+  "kind": "calc",
+  "row": 1,
+  "col": "誤差率 (%)",
+  "id": 4,
+  "template": "t_percent_err"
+ },
+ {
+  "kind": "transpose",
+  "row": 1,
+  "col": "平均 (mL)",
+  "id": 5,
+  "template": "t_titration"
+ },
+ {
+  "kind": "transpose",
+  "row": 2,
+  "col": "d (Å)",
+  "id": 6,
+  "template": "t_unit"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 7,
+  "template": "t_temp"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 8,
+  "template": "t_yield"
+ },
+ {
+  "kind": "lastdigit",
+  "row": 4,
+  "col": "d (nm)",
+  "id": 9,
+  "template": "t_xrd"
+ },
+ {
+  "kind": "calc",
+  "row": 1,
+  "col": "P (mW)",
+  "id": 10,
+  "template": "t_ohm"
+ },
+ {
+  "kind": "lastdigit",
+  "row": 2,
+  "col": "g (m/s²)",
+  "id": 11,
+  "template": "t_pendulum"
+ },
+ {
+  "kind": "unit10",
+  "row": 3,
+  "col": "f (cm)",
+  "id": 12,
+  "template": "t_lens"
+ },
+ {
+  "kind": "input",
+  "row": 3,
+  "col": "g (m/s²)",
+  "id": 13,
+  "template": "t_percent_err"
+ },
+ {
+  "kind": "lastdigit",
+  "row": 3,
+  "col": "ρ (g/cm³)",
+  "id": 14,
+  "template": "t_density"
+ },
+ {
+  "kind": "calc",
+  "row": 2,
+  "col": "n",
+  "id": 15,
+  "template": "t_refraction"
+ },
+ {
+  "kind": "input",
+  "row": 2,
+  "col": "透過率 T (%)",
+  "id": 16,
+  "template": "t_absorb"
+ },
+ {
+  "kind": "calc",
+  "row": 5,
+  "col": "f (cm)",
+  "id": 17,
+  "template": "t_lens"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 18,
+  "template": "t_xrd"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 19,
+  "template": "t_heat"
+ },
+ {
+  "kind": "unit10",
+  "row": 4,
+  "col": "f (cm)",
+  "id": 20,
+  "template": "t_lens"
+ },
+ {
+  "kind": "calc",
+  "row": 1,
+  "col": "sin i",
+  "id": 21,
+  "template": "t_refraction"
+ },
+ {
+  "kind": "calc",
+  "row": 1,
+  "col": "Q (J)",
+  "id": 22,
+  "template": "t_heat"
+ },
+ {
+  "kind": "transpose",
+  "row": 3,
+  "col": "sin²θ",
+  "id": 23,
+  "template": "t_xrd"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 24,
+  "template": "t_spring"
+ },
+ {
+  "kind": "unit10",
+  "row": 2,
+  "col": "d (Å)",
+  "id": 25,
+  "template": "t_unit"
+ },
+ {
+  "kind": "lastdigit",
+  "row": 1,
+  "col": "R (Ω)",
+  "id": 26,
+  "template": "t_ohm"
+ },
+ {
+  "kind": "unit10",
+  "row": 3,
+  "col": "吸光度 A",
+  "id": 27,
+  "template": "t_absorb"
+ },
+ {
+  "kind": "calc",
+  "row": 1,
+  "col": "F (N)",
+  "id": 28,
+  "template": "t_spring"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 29,
+  "template": "t_density"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 30,
+  "template": "t_heat"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 31,
+  "template": "t_freefall"
+ },
+ {
+  "kind": "input",
+  "row": 5,
+  "col": "1回目 (mL)",
+  "id": 32,
+  "template": "t_titration"
+ },
+ {
+  "kind": "summary_sd",
+  "row": 9,
+  "col": "長さ (mm)",
+  "id": 33,
+  "template": "t_summary"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 34,
+  "template": "t_summary"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 35,
+  "template": "t_kinetic"
+ },
+ {
+  "kind": "unit10",
+  "row": 3,
+  "col": "Q (J)",
+  "id": 36,
+  "template": "t_heat"
+ },
+ {
+  "kind": "transpose",
+  "row": 1,
+  "col": "d (Å)",
+  "id": 37,
+  "template": "t_unit"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 38,
+  "template": "t_yield"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 39,
+  "template": "t_pendulum"
+ },
+ {
+  "kind": "lastdigit",
+  "row": 3,
+  "col": "F (N)",
+  "id": 40,
+  "template": "t_spring"
+ },
+ {
+  "kind": "calc",
+  "row": 6,
+  "col": "吸光度 A",
+  "id": 41,
+  "template": "t_absorb"
+ },
+ {
+  "kind": "lastdigit",
+  "row": 5,
+  "col": "g (m/s²)",
+  "id": 42,
+  "template": "t_freefall"
+ },
+ {
+  "kind": "calc",
+  "row": 1,
+  "col": "f (cm)",
+  "id": 43,
+  "template": "t_lens"
+ },
+ {
+  "kind": "summary_sd",
+  "row": 7,
+  "col": "長さ (mm)",
+  "id": 44,
+  "template": "t_summary"
+ },
+ {
+  "kind": "lastdigit",
+  "row": 2,
+  "col": "K (J)",
+  "id": 45,
+  "template": "t_kinetic"
+ },
+ {
+  "kind": "deg_rad",
+  "row": null,
+  "col": "sin i",
+  "id": 46,
+  "template": "t_refraction"
+ },
+ {
+  "kind": "calc",
+  "row": 4,
+  "col": "平均 (mL)",
+  "id": 47,
+  "template": "t_titration"
+ },
+ {
+  "kind": "unit10",
+  "row": 4,
+  "col": "ρ (g/cm³)",
+  "id": 48,
+  "template": "t_density"
+ },
+ {
+  "kind": "lastdigit",
+  "row": 5,
+  "col": "P (mW)",
+  "id": 49,
+  "template": "t_ohm"
+ },
+ {
+  "kind": "unit10",
+  "row": 2,
+  "col": "T² (s²)",
+  "id": 50,
+  "template": "t_pendulum"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 51,
+  "template": "t_summary"
+ },
+ {
+  "kind": "lastdigit",
+  "row": 5,
+  "col": "誤差率 (%)",
+  "id": 52,
+  "template": "t_percent_err"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 53,
+  "template": "t_percent_err"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 54,
+  "template": "t_kinetic"
+ },
+ {
+  "kind": "unit10",
+  "row": 2,
+  "col": "d (Å)",
+  "id": 55,
+  "template": "t_unit"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 56,
+  "template": "t_titration"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 57,
+  "template": "t_yield"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 58,
+  "template": "t_spring"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 59,
+  "template": "t_density"
+ },
+ {
+  "kind": "input",
+  "row": 1,
+  "col": "t (℃)",
+  "id": 60,
+  "template": "t_temp"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 61,
+  "template": "t_freefall"
+ },
+ {
+  "kind": "transpose",
+  "row": 5,
+  "col": "sin²θ",
+  "id": 62,
+  "template": "t_xrd"
+ },
+ {
+  "kind": "transpose",
+  "row": 2,
+  "col": "T (K)",
+  "id": 63,
+  "template": "t_temp"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 64,
+  "template": "t_kinetic"
+ },
+ {
+  "kind": "transpose",
+  "row": 3,
+  "col": "吸光度 A",
+  "id": 65,
+  "template": "t_absorb"
+ },
+ {
+  "kind": "lastdigit",
+  "row": 1,
+  "col": "n",
+  "id": 66,
+  "template": "t_refraction"
+ },
+ {
+  "kind": "calc",
+  "row": 4,
+  "col": "収率 (%)",
+  "id": 67,
+  "template": "t_yield"
+ },
+ {
+  "kind": "lastdigit",
+  "row": 6,
+  "col": "g (m/s²)",
+  "id": 68,
+  "template": "t_pendulum"
+ }
+]

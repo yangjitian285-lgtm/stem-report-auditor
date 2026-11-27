@@ -17,6 +17,7 @@ from .embeddings import create_backend
 from .math_engine import ScoringConfig, UniquenessScorer
 from .stem_auditor import audit_stem_document
 from .stem_engine import DataSeriesInput, StemUniquenessScorer
+from .table_checker import check_table, check_table_text
 
 
 SERVER_INFO = {
@@ -169,7 +170,7 @@ TOOLS_SPEC: List[Dict[str, Any]] = [
         "name": "audit_stem_file",
         "description": (
             "Word(.docx) / PDF / テキストの理系レポートファイルを1ファイルそのまま監査します。"
-            "①表内計算の自動検算（sin²θ、格子定数、Mw/Mn、平均値）、"
+            "①表内計算の自動検算（分野を問わない汎用検算：列間の計算関係を推定して外れた行を指摘。加えて sin²θ・格子定数・Mw/Mn の専用検算）、"
             "②表間・表と本文の数値/ミラー指数矛盾・有効数字・誤記・テンプレ消し忘れ検知、"
             "③実験データの系統バイアス＆線形外挿（cos²θ→0等）の自動発見、"
             "④理系考察の6軸脱・量産型AIスコアを一括返却します。"
@@ -191,6 +192,24 @@ TOOLS_SPEC: List[Dict[str, Any]] = [
                 },
             },
             "required": ["file_path"],
+        },
+    },
+    {
+        "name": "check_table_generic",
+        "description": (
+            "分野を問わない汎用の表検算。表（CSV/TSV/Markdown/スペース区切りのテキスト、または headers+rows）を渡すと、"
+            "列どうしの計算関係（四則演算・定数倍・単位換算・三角関数/対数・平均/合計/標準偏差・誤差率など）を"
+            "丸め幅から推定し、関係から外れたセル、集計行の誤り、桁数の不統一、単位換算の桁ずれ、度/ラジアンや2θ/θの取り違えを返します。"
+            "推定した関係そのもの（relations）も返すので、どの式で検算したかを確認できます。"
+        ),
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "table_text": {"type": "string", "description": "表のテキスト（1行目が見出し）"},
+                "headers": {"type": "array", "items": {"type": "string"}},
+                "rows": {"type": "array", "items": {"type": "array", "items": {"type": "string"}}},
+                "caption": {"type": "string", "default": "表"},
+            },
         },
     },
     {
@@ -274,6 +293,14 @@ def execute_tool(name: str, arguments: Dict[str, Any]) -> Dict[str, Any]:
             highlight_insertions=arguments.get("highlight_insertions", True),
         )
         return res.to_dict()
+
+    if name == "check_table_generic":
+        caption = arguments.get("caption", "表")
+        if arguments.get("table_text"):
+            return check_table_text(arguments["table_text"], caption).to_dict()
+        if arguments.get("headers") and arguments.get("rows"):
+            return check_table(arguments["headers"], arguments["rows"], caption).to_dict()
+        raise ValueError("table_text か headers+rows のどちらかを指定してください。")
 
     if name not in _DEFAULT_PROVIDER:
         raise ValueError(f"Unknown tool: {name}")

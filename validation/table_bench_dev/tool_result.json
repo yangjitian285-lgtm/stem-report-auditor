@@ -1,0 +1,763 @@
+{
+ "summary": {
+  "errors": 39,
+  "clean": 29,
+  "recall": 1.0,
+  "false_alarm_rate_clean_tables": 0.0,
+  "tables_with_extra_wrong_row_flags": 0,
+  "per_kind": {
+   "calc": "10/10",
+   "deg_rad": "1/1",
+   "input": "8/8",
+   "lastdigit": "8/8",
+   "summary_mean": "1/1",
+   "transpose": "9/9",
+   "unit10": "2/2"
+  },
+  "detail": [
+   [
+    1,
+    "clean",
+    "TN"
+   ],
+   [
+    2,
+    "calc",
+    "TP"
+   ],
+   [
+    3,
+    "calc",
+    "TP"
+   ],
+   [
+    4,
+    "summary_mean",
+    "TP"
+   ],
+   [
+    5,
+    "transpose",
+    "TP"
+   ],
+   [
+    6,
+    "lastdigit",
+    "TP"
+   ],
+   [
+    7,
+    "clean",
+    "TN"
+   ],
+   [
+    8,
+    "input",
+    "TP"
+   ],
+   [
+    9,
+    "clean",
+    "TN"
+   ],
+   [
+    10,
+    "clean",
+    "TN"
+   ],
+   [
+    11,
+    "input",
+    "TP"
+   ],
+   [
+    12,
+    "calc",
+    "TP"
+   ],
+   [
+    13,
+    "input",
+    "TP"
+   ],
+   [
+    14,
+    "clean",
+    "TN"
+   ],
+   [
+    15,
+    "clean",
+    "TN"
+   ],
+   [
+    16,
+    "clean",
+    "TN"
+   ],
+   [
+    17,
+    "unit10",
+    "TP"
+   ],
+   [
+    18,
+    "deg_rad",
+    "TP"
+   ],
+   [
+    19,
+    "transpose",
+    "TP"
+   ],
+   [
+    20,
+    "input",
+    "TP"
+   ],
+   [
+    21,
+    "clean",
+    "TN"
+   ],
+   [
+    22,
+    "clean",
+    "TN"
+   ],
+   [
+    23,
+    "transpose",
+    "TP"
+   ],
+   [
+    24,
+    "calc",
+    "TP"
+   ],
+   [
+    25,
+    "clean",
+    "TN"
+   ],
+   [
+    26,
+    "clean",
+    "TN"
+   ],
+   [
+    27,
+    "clean",
+    "TN"
+   ],
+   [
+    28,
+    "clean",
+    "TN"
+   ],
+   [
+    29,
+    "clean",
+    "TN"
+   ],
+   [
+    30,
+    "clean",
+    "TN"
+   ],
+   [
+    31,
+    "lastdigit",
+    "TP"
+   ],
+   [
+    32,
+    "transpose",
+    "TP"
+   ],
+   [
+    33,
+    "calc",
+    "TP"
+   ],
+   [
+    34,
+    "calc",
+    "TP"
+   ],
+   [
+    35,
+    "clean",
+    "TN"
+   ],
+   [
+    36,
+    "clean",
+    "TN"
+   ],
+   [
+    37,
+    "input",
+    "TP"
+   ],
+   [
+    38,
+    "transpose",
+    "TP"
+   ],
+   [
+    39,
+    "lastdigit",
+    "TP"
+   ],
+   [
+    40,
+    "clean",
+    "TN"
+   ],
+   [
+    41,
+    "lastdigit",
+    "TP"
+   ],
+   [
+    42,
+    "lastdigit",
+    "TP"
+   ],
+   [
+    43,
+    "transpose",
+    "TP"
+   ],
+   [
+    44,
+    "input",
+    "TP"
+   ],
+   [
+    45,
+    "calc",
+    "TP"
+   ],
+   [
+    46,
+    "calc",
+    "TP"
+   ],
+   [
+    47,
+    "transpose",
+    "TP"
+   ],
+   [
+    48,
+    "transpose",
+    "TP"
+   ],
+   [
+    49,
+    "clean",
+    "TN"
+   ],
+   [
+    50,
+    "clean",
+    "TN"
+   ],
+   [
+    51,
+    "lastdigit",
+    "TP"
+   ],
+   [
+    52,
+    "clean",
+    "TN"
+   ],
+   [
+    53,
+    "unit10",
+    "TP"
+   ],
+   [
+    54,
+    "clean",
+    "TN"
+   ],
+   [
+    55,
+    "clean",
+    "TN"
+   ],
+   [
+    56,
+    "calc",
+    "TP"
+   ],
+   [
+    57,
+    "transpose",
+    "TP"
+   ],
+   [
+    58,
+    "clean",
+    "TN"
+   ],
+   [
+    59,
+    "clean",
+    "TN"
+   ],
+   [
+    60,
+    "input",
+    "TP"
+   ],
+   [
+    61,
+    "clean",
+    "TN"
+   ],
+   [
+    62,
+    "clean",
+    "TN"
+   ],
+   [
+    63,
+    "calc",
+    "TP"
+   ],
+   [
+    64,
+    "clean",
+    "TN"
+   ],
+   [
+    65,
+    "lastdigit",
+    "TP"
+   ],
+   [
+    66,
+    "input",
+    "TP"
+   ],
+   [
+    67,
+    "clean",
+    "TN"
+   ],
+   [
+    68,
+    "lastdigit",
+    "TP"
+   ]
+  ]
+ },
+ "predictions": {
+  "1": [],
+  "2": [
+   {
+    "row": 1,
+    "col": "g (m/s²)",
+    "severity": "WARNING",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の5行は「g = 4π²·L/T²」で一致しますが、この行は記載 9.88 に対し計算値 9.93168（許容 ±0.012）です。"
+   }
+  ],
+  "3": [
+   {
+    "row": 3,
+    "col": "g (m/s²)",
+    "severity": "WARNING",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の4行は「g = 2·h/(t)²」で一致しますが、この行は記載 9.92 に対し計算値 9.87654（許容 ±0.034）です。"
+   }
+  ],
+  "4": [
+   {
+    "row": 7,
+    "col": "長さ (mm)",
+    "severity": "CRITICAL",
+    "kind": "SUMMARY_ROW",
+    "message": "平均の行の 長さ (mm) は記載 9.756 ですが、データ6行から計算すると 平均 9.74867 です。"
+   }
+  ],
+  "5": [
+   {
+    "row": 4,
+    "col": "k (N/m)",
+    "severity": "WARNING",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の3行は「k = 100·F/x」で一致しますが、この行は記載 35.2 に対し計算値 30.3411（許容 ±0.091）です。"
+   }
+  ],
+  "6": [
+   {
+    "row": 3,
+    "col": "K (J)",
+    "severity": "WARNING",
+    "kind": "LAST_DIGIT",
+    "message": "他の3行は表に書かれた値から「K = 1/2·m·(v)²」で計算すると最終桁まで一致しますが、この行は記載 8.46 に対し 8.48413 です。"
+   }
+  ],
+  "7": [],
+  "8": [
+   {
+    "row": 3,
+    "col": "収率 (%)",
+    "severity": "CRITICAL",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の3行は「収率 = 41.22·収量」で一致しますが、この行は記載 56.2 に対し計算値 55.067（許容 ±0.074）です。"
+   }
+  ],
+  "9": [],
+  "10": [],
+  "11": [
+   {
+    "row": 2,
+    "col": "d (Å)",
+    "severity": "CRITICAL",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の3行は「d = 10^1·d」で一致しますが、この行は記載 3.576 に対し計算値 5.376（許容 ±0.0011）です。"
+   }
+  ],
+  "12": [
+   {
+    "row": 3,
+    "col": "Q (J)",
+    "severity": "WARNING",
+    "kind": "LAST_DIGIT",
+    "message": "他の5行は表に書かれた値から「Q = 4.18·m·ΔT」で計算すると最終桁まで一致しますが、この行は記載 2411 に対し 2401.58 です。"
+   }
+  ],
+  "13": [
+   {
+    "row": 2,
+    "col": "sin²θ",
+    "severity": "CRITICAL",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の3行は「sin²θ = sin²(2θ/2)°」で一致しますが、この行は記載 0.1447 に対し計算値 0.141971（許容 ±8.4e-05）です。"
+   }
+  ],
+  "14": [],
+  "15": [],
+  "16": [],
+  "17": [
+   {
+    "row": 3,
+    "col": "平均 (mL)",
+    "severity": "CRITICAL",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の3行は「平均 = 平均(1回目〜3回目)」で一致しますが、この行は記載 0.93 に対し計算値 9.28667（許容 ±0.011）です。"
+   }
+  ],
+  "18": [
+   {
+    "row": null,
+    "col": "sin r",
+    "severity": "CRITICAL",
+    "kind": "DEG_RAD",
+    "message": "sin r は「sin r(rad)」、つまり r (°) をラジアンとして計算した値と一致します。列名は度のようです。"
+   },
+   {
+    "row": null,
+    "col": "sin i",
+    "severity": "CRITICAL",
+    "kind": "DEG_RAD",
+    "message": "sin i は「sin i(rad)」、つまり i (°) をラジアンとして計算した値と一致します。列名は度のようです。"
+   }
+  ],
+  "19": [
+   {
+    "row": 5,
+    "col": "誤差率 (%)",
+    "severity": "WARNING",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の4行は「誤差率 = 100·|g − 9.8|/9.8（基準値 9.8 を推定）」で一致しますが、この行は記載 1.35 に対し計算値 1.53061（許容 ±0.059）です。"
+   }
+  ],
+  "20": [
+   {
+    "row": 1,
+    "col": "T (K)",
+    "severity": "CRITICAL",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の4行は「T = t + 273.15」で一致しますが、この行は記載 333.75 に対し計算値 279.75（許容 ±0.058）です。"
+   }
+  ],
+  "21": [],
+  "22": [],
+  "23": [
+   {
+    "row": 3,
+    "col": "n",
+    "severity": "CRITICAL",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の5行は「n = (sin i)/(sin r)」で一致しますが、この行は記載 1.475 に対し計算値 0.147493（許容 ±0.0023）です。"
+   },
+   {
+    "row": 3,
+    "col": "sin i",
+    "severity": "CRITICAL",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の5行は「sin i = sin i°」で一致しますが、この行は記載 0.050 に対し計算値 0.5（許容 ±0.00053）です。"
+   }
+  ],
+  "24": [
+   {
+    "row": 2,
+    "col": "収率 (%)",
+    "severity": "CRITICAL",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の3行は「収率 = 35.13·収量」で一致しますが、この行は記載 70.6 に対し計算値 69.9458（許容 ±0.071）です。"
+   }
+  ],
+  "25": [],
+  "26": [],
+  "27": [],
+  "28": [],
+  "29": [],
+  "30": [],
+  "31": [
+   {
+    "row": 3,
+    "col": "K (J)",
+    "severity": "WARNING",
+    "kind": "LAST_DIGIT",
+    "message": "他の3行は表に書かれた値から「K = 1/2·m·(v)²」で計算すると最終桁まで一致しますが、この行は記載 3.78 に対し 3.75814 です。"
+   }
+  ],
+  "32": [
+   {
+    "row": 5,
+    "col": "f (cm)",
+    "severity": "CRITICAL",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の5行は「f = a·b/(a + b)」で一致しますが、この行は記載 14.91 に対し計算値 14.1935（許容 ±0.034）です。"
+   }
+  ],
+  "33": [
+   {
+    "row": 1,
+    "col": "g (m/s²)",
+    "severity": "WARNING",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の4行は「g = 4π²·L/T²」で一致しますが、この行は記載 9.75 に対し計算値 9.78399（許容 ±0.012）です。"
+   }
+  ],
+  "34": [
+   {
+    "row": 2,
+    "col": "g (m/s²)",
+    "severity": "WARNING",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の5行は「g = 2·h/(t)²」で一致しますが、この行は記載 9.84 に対し計算値 9.90075（許容 ±0.038）です。"
+   }
+  ],
+  "35": [],
+  "36": [],
+  "37": [
+   {
+    "row": 1,
+    "col": "sin²θ",
+    "severity": "CRITICAL",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の4行は「sin²θ = sin²(2θ/2)°」で一致しますが、この行は記載 0.1362 に対し計算値 0.0870492（許容 ±7.8e-05）です。"
+   }
+  ],
+  "38": [
+   {
+    "row": 4,
+    "col": "Q (J)",
+    "severity": "WARNING",
+    "kind": "LAST_DIGIT",
+    "message": "他の3行は表に書かれた値から「Q = 4.18·m·ΔT」で計算すると最終桁まで一致しますが、この行は記載 5913 に対し 5931.29 です。"
+   }
+  ],
+  "39": [
+   {
+    "row": 4,
+    "col": "d (Å)",
+    "severity": "WARNING",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の3行は「d = 10^1·d」で一致しますが、この行は記載 1.007 に対し計算値 1.009（許容 ±0.0011）です。"
+   }
+  ],
+  "40": [],
+  "41": [
+   {
+    "row": 3,
+    "col": "k (N/m)",
+    "severity": "WARNING",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の5行は「k = 100·F/x」で一致しますが、この行は記載 20.6 に対し計算値 20.4167（許容 ±0.075）です。"
+   }
+  ],
+  "42": [
+   {
+    "row": 3,
+    "col": "吸光度 A",
+    "severity": "WARNING",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の3行は「吸光度 A = −log₁₀ (透過率 T) + 2」で一致しますが、この行は記載 0.414 に対し計算値 0.415669（許容 ±0.0011）です。"
+   }
+  ],
+  "43": [
+   {
+    "row": 1,
+    "col": "吸光度 A",
+    "severity": "CRITICAL",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の3行は「吸光度 A = −log₁₀ (透過率 T) + 2」で一致しますが、この行は記載 0.216 に対し計算値 0.126098（許容 ±0.00083）です。"
+   }
+  ],
+  "44": [
+   {
+    "row": 4,
+    "col": "平均 (mL)",
+    "severity": "WARNING",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の4行は「平均 = 平均(1回目〜3回目)」で一致しますが、この行は記載 19.98 に対し計算値 20.0133（許容 ±0.011）です。"
+   }
+  ],
+  "45": [
+   {
+    "row": 1,
+    "col": "d (Å)",
+    "severity": "WARNING",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の4行は「d = 10^1·d」で一致しますが、この行は記載 3.896 に対し計算値 3.9（許容 ±0.0011）です。"
+   }
+  ],
+  "46": [
+   {
+    "row": 4,
+    "col": "n",
+    "severity": "WARNING",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の4行は「n = (sin i)/(sin r)」で一致しますが、この行は記載 1.547 に対し計算値 1.53828（許容 ±0.0037）です。"
+   }
+  ],
+  "47": [
+   {
+    "row": 4,
+    "col": "収率 (%)",
+    "severity": "CRITICAL",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の4行は「収率 = 48.71·収量」で一致しますが、この行は記載 64.8 に対し計算値 46.809（許容 ±0.078）です。"
+   }
+  ],
+  "48": [
+   {
+    "row": 5,
+    "col": "g (m/s²)",
+    "severity": "CRITICAL",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の5行は「g = 2·h/(t)²」で一致しますが、この行は記載 9.07 に対し計算値 9.70447（許容 ±0.027）です。"
+   }
+  ],
+  "49": [],
+  "50": [],
+  "51": [
+   {
+    "row": 1,
+    "col": "n",
+    "severity": "WARNING",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の3行は「n = (sin i)/(sin r)」で一致しますが、この行は記載 1.582 に対し計算値 1.55357（許容 ±0.013）です。"
+   },
+   {
+    "row": 1,
+    "col": "sin r",
+    "severity": "WARNING",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の3行は「sin r = sin r°」で一致しますが、この行は記載 0.112 に対し計算値 0.109734（許容 ±0.0014）です。"
+   }
+  ],
+  "52": [],
+  "53": [
+   {
+    "row": 2,
+    "col": "K (J)",
+    "severity": "CRITICAL",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の3行は「K = 1/2·m·(v)²」で一致しますが、この行は記載 63.60 に対し計算値 6.36402（許容 ±0.028）です。"
+   }
+  ],
+  "54": [],
+  "55": [],
+  "56": [
+   {
+    "row": 2,
+    "col": "R (Ω)",
+    "severity": "WARNING",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の3行は「R = 10^3·V/I」で一致しますが、この行は記載 173 に対し計算値 176.471（許容 ±1.1）です。"
+   }
+  ],
+  "57": [
+   {
+    "row": 6,
+    "col": "P (mW)",
+    "severity": "CRITICAL",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の5行は「P = V·I」で一致しますが、この行は記載 524 に対し計算値 541.56（許容 ±1）です。"
+   }
+  ],
+  "58": [],
+  "59": [],
+  "60": [
+   {
+    "row": 4,
+    "col": "収率 (%)",
+    "severity": "CRITICAL",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の4行は「収率 = 31.5·収量」で一致しますが、この行は記載 46.5 に対し計算値 45.8912（許容 ±0.069）です。"
+   }
+  ],
+  "61": [],
+  "62": [],
+  "63": [
+   {
+    "row": 5,
+    "col": "Q (J)",
+    "severity": "WARNING",
+    "kind": "LAST_DIGIT",
+    "message": "他の4行は表に書かれた値から「Q = 4.18·m·ΔT」で計算すると最終桁まで一致しますが、この行は記載 1969 に対し 1977.98 です。"
+   }
+  ],
+  "64": [],
+  "65": [
+   {
+    "row": 3,
+    "col": "吸光度 A",
+    "severity": "WARNING",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の4行は「吸光度 A = −log₁₀ (透過率 T) + 2」で一致しますが、この行は記載 0.294 に対し計算値 0.295849（許容 ±0.00098）です。"
+   }
+  ],
+  "66": [
+   {
+    "row": 3,
+    "col": "d (Å)",
+    "severity": "CRITICAL",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の3行は「d = 10^1·d」で一致しますが、この行は記載 4.239 に対し計算値 4.293（許容 ±0.0011）です。"
+   }
+  ],
+  "67": [],
+  "68": [
+   {
+    "row": 5,
+    "col": "吸光度 A",
+    "severity": "WARNING",
+    "kind": "RELATION_OUTLIER",
+    "message": "他の4行は「吸光度 A = −log₁₀ (透過率 T) + 2」で一致しますが、この行は記載 0.614 に対し計算値 0.616185（許容 ±0.0015）です。"
+   }
+  ]
+ }
+}

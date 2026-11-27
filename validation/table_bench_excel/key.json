@@ -1,0 +1,478 @@
+[
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 1,
+  "template": "t_percent_err"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 2,
+  "template": "t_refraction"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 3,
+  "template": "t_summary"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 4,
+  "template": "t_ohm"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 5,
+  "template": "t_spring"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 6,
+  "template": "t_lens"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 7,
+  "template": "t_absorb"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 8,
+  "template": "t_unit"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 9,
+  "template": "t_yield"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 10,
+  "template": "t_titration"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 11,
+  "template": "t_unit"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 12,
+  "template": "t_kinetic"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 13,
+  "template": "t_lens"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 14,
+  "template": "t_yield"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 15,
+  "template": "t_freefall"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 16,
+  "template": "t_summary"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 17,
+  "template": "t_yield"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 18,
+  "template": "t_spring"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 19,
+  "template": "t_density"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 20,
+  "template": "t_pendulum"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 21,
+  "template": "t_heat"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 22,
+  "template": "t_freefall"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 23,
+  "template": "t_xrd"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 24,
+  "template": "t_heat"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 25,
+  "template": "t_freefall"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 26,
+  "template": "t_kinetic"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 27,
+  "template": "t_pendulum"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 28,
+  "template": "t_heat"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 29,
+  "template": "t_temp"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 30,
+  "template": "t_lens"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 31,
+  "template": "t_unit"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 32,
+  "template": "t_percent_err"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 33,
+  "template": "t_density"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 34,
+  "template": "t_density"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 35,
+  "template": "t_absorb"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 36,
+  "template": "t_refraction"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 37,
+  "template": "t_percent_err"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 38,
+  "template": "t_summary"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 39,
+  "template": "t_titration"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 40,
+  "template": "t_temp"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 41,
+  "template": "t_pendulum"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 42,
+  "template": "t_ohm"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 43,
+  "template": "t_heat"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 44,
+  "template": "t_titration"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 45,
+  "template": "t_xrd"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 46,
+  "template": "t_temp"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 47,
+  "template": "t_ohm"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 48,
+  "template": "t_density"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 49,
+  "template": "t_spring"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 50,
+  "template": "t_kinetic"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 51,
+  "template": "t_summary"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 52,
+  "template": "t_kinetic"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 53,
+  "template": "t_refraction"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 54,
+  "template": "t_ohm"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 55,
+  "template": "t_pendulum"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 56,
+  "template": "t_absorb"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 57,
+  "template": "t_lens"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 58,
+  "template": "t_freefall"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 59,
+  "template": "t_yield"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 60,
+  "template": "t_xrd"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 61,
+  "template": "t_unit"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 62,
+  "template": "t_xrd"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 63,
+  "template": "t_temp"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 64,
+  "template": "t_spring"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 65,
+  "template": "t_absorb"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 66,
+  "template": "t_titration"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 67,
+  "template": "t_refraction"
+ },
+ {
+  "kind": "clean",
+  "row": null,
+  "col": null,
+  "id": 68,
+  "template": "t_percent_err"
+ }
+]

@@ -26,6 +26,7 @@ from .stem_engine import (
 from .doc_parser import ParsedDocument, ParsedTable, parse_report_file
 from .docx_patcher import PatchOperationResult, patch_docx_safe
 from .stem_auditor import AuditFinding, FullStemAuditReport, audit_stem_document
+from .table_checker import TableCheckResult, check_table, check_table_text
 
 __all__ = [
     "UniquenessScorer",
@@ -56,4 +57,7 @@ __all__ = [
     "AuditFinding",
     "FullStemAuditReport",
     "audit_stem_document",
+    "TableCheckResult",
+    "check_table",
+    "check_table_text",
 ]
