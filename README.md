@@ -6,7 +6,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![Dependencies](https://img.shields.io/badge/Deps-NumPy%20%2B%20Requests-013243?style=flat-square&logo=numpy&logoColor=white)](requirements.txt)
-[![MCP](https://img.shields.io/badge/MCP-6%20Tools%20Ready-6366F1?style=flat-square)](uniqueness_scorer/mcp_server.py)
+[![MCP](https://img.shields.io/badge/MCP-7%20Tools%20Ready-6366F1?style=flat-square)](uniqueness_scorer/mcp_server.py)
 [![License: MIT](https://img.shields.io/badge/License-MIT-22C55E?style=flat-square)](LICENSE)
 
 *Don't ask an LLM to "vibe-check" your lab report. Give it a deterministic compiler.*
@@ -36,6 +36,23 @@ $ python cli.py audit lab_report.docx --html-out audit.html
 
 > 監査結果・回帰外挿グラフ・主張単位のAI被りヒートマップは、そのままブラウザで開けるスタンドアロンHTMLにも出力できます。
 
+### どんな実験の表でも：汎用検算
+
+```text
+$ python cli.py table ohm.csv
+
+推定した計算関係:
+  P (mW) = V·I   [4/5 行一致]
+指摘 1 件:
+  [CRITICAL] 行4 P (mW): 他の4行は「P = V·I」で一致しますが、この行は記載 136 に対し計算値 163.2（許容 ±0.74）です。
+```
+
+列名や実験テーマに頼らず、数値だけから列どうしの式（四則演算・定数倍・単位換算・平方/平方根/対数/三角関数・`t + 273.15`・平均/合計/標準偏差・`ab/(a+b)`・文献値に対する誤差率）を推定し、各セルの丸め幅を伝播させた許容範囲で照合します。`audit` では Word/PDF 内のすべての表に自動で適用されます。
+
+- 見つけるもの：式から外れた行、平均・標準偏差の行の誤り（n と n−1 の区別）、手計算の表での最終桁のずれ、単位換算の桁ずれ、度/ラジアンの取り違え、2θ をそのまま使った三角関数
+- できないこと：列全体が同じ誤った式（上記の角度・単位以外）、3列以上をまたぐ式、表にない定数が2つ以上入る式
+- 精度と有料LLMとの比較：[validation/TABLE_BENCH_REPORT.md](validation/TABLE_BENCH_REPORT.md)（表の算術だけなら、丁寧に検算させたLLMとほぼ同等。差は再現性・コスト・規模に出ます）
+
 ---
 
 ## Why Not Just Ask ChatGPT / Claude?
@@ -43,6 +60,7 @@ $ python cli.py audit lab_report.docx --html-out audit.html
 | チェック項目 | 素のLLMに「採点して」 | **STEM Report Auditor (+ MCP)** |
 | :--- | :--- | :--- |
 | 表の全行検算・表間の数値突合 | 雰囲気読み・暗算ミスが起きる | **NumPyで全行100%決定論的検算** |
+| どんな実験の表でも検算 | 毎回結果が揺れる・長い表で見落とす | **列間の式を自動推定し、丸め幅から許容誤差を決めて照合**（合成表の最終評価で検出 91.5%・誤検知 0%） |
 | 系統バイアス検知・線形外挿 | 自分から最小二乗法を回さない | **相関 $R^2$・外挿値・誤差削減率を自動算出** |
 | 「概ね一致・読み取り誤差」の量産考察 | LLM自身の好みに近く**高評価してしまう** | **逃げ表現減点＋Vendi Score増分で厳格採点** |
 | Word（`.docx`）の安全修正 | バイナリ直接編集が苦手 | **元ファイル非上書き・図表保持のままコピー修正** |
@@ -88,6 +106,9 @@ python demo_stem.py
 # 2. 自分のWordレポートを1コマンド完全監査＋HTML出力
 python cli.py audit your_report.docx --html-out audit.html
 
+# 2'. CSV / TSV / Markdown の表だけを汎用検算（1行目が見出し）
+python cli.py table your_table.csv
+
 # 3. 論述レポート・就活ESの「脱・量産型AI」採点
 python cli.py score --task task.txt --draft draft.md --cohort cohort.json --html-out report.html
 ```
@@ -99,11 +120,12 @@ python cli.py score --task task.txt --draft draft.md --cohort cohort.json --html
 ## Details
 
 <details>
-<summary><strong>MCP Tools一覧（全6ツール）</strong></summary>
+<summary><strong>MCP Tools一覧（全7ツール）</strong></summary>
 
 | Tool | Description |
 | :--- | :--- |
 | `audit_stem_file` | `.docx` / `.pdf` / `.txt` を1ファイル丸投げ完全監査（検算・表間矛盾・有効数字・誤記・系統バイアス外挿・考察6軸） |
+| `check_table_generic` | 分野を問わない汎用表検算（CSV/TSV/Markdown テキスト、または headers+rows）。推定した式（relations）と外れた行を返す |
 | `patch_docx_safe` | 元 `.docx` 保護・図表/書式保持で `*_revised.docx` へパッチ適用＋Before/After自動再監査 |
 | `score_stem_report` | 理系考察テキスト＋実測データ系列の6軸数理診断 |
 | `score_report_uniqueness` | 自由論述レポート・就活ESの6軸独自性スコア＋品質ゲート |
@@ -140,6 +162,7 @@ $$\text{Score}(x \mid q) = 100 \times G(x \mid q)^{\alpha} \times \Bigl(w_1 S_{\
 ```bash
 pip install -r requirements-dev.txt
 python -m pytest -q
+python validation/table_bench.py --split holdout   # 汎用表検算のベンチマーク
 ```
 
 </details>

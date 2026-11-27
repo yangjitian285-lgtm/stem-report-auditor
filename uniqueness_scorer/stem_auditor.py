@@ -33,6 +33,7 @@ from .domain_rules import (
     stem_signal_score,
 )
 from .embeddings import EmbeddingBackend, LocalHybridEmbedder
+from .table_checker import check_table
 from .stem_engine import (
     DataSeriesInput,
     NumericAuditResult,
@@ -648,7 +649,29 @@ def _auto_discover_data_series(doc: ParsedDocument, profiles: Sequence[DomainPro
 
 
 # 決定論的チェックとして「実行できた」ことを示すカテゴリ
-_CHECK_CATEGORIES = {"CALC_CHECK", "CROSS_CONSISTENCY", "SIG_FIG", "NUMBERING"}
+_CHECK_CATEGORIES = {"CALC_CHECK", "CROSS_CONSISTENCY", "SIG_FIG", "NUMBERING", "GENERIC_CALC"}
+
+
+def _audit_generic_tables(tables: Sequence[ParsedTable], existing: Sequence[AuditFinding]) -> List[AuditFinding]:
+    """分野を問わない汎用検算（列間の計算関係を推定し、外れたセルを指摘）."""
+    taken = {f.location for f in existing if f.category == "CALC_CHECK" and f.severity in ("CRITICAL", "WARNING")}
+    out: List[AuditFinding] = []
+    for tbl in tables:
+        if len(tbl.rows) < 3:
+            continue
+        res = check_table(tbl.headers, tbl.rows, tbl.caption)
+        for tf in res.findings:
+            loc = tbl.caption + (f" 行{tf.row}" if tf.row else "") + (f"（{tf.column}）" if tf.column and not tf.row else "")
+            if tf.row and f"{tbl.caption} 行{tf.row}" in taken:
+                continue  # 分野別の専用検算ですでに指摘済み
+            out.append(AuditFinding(
+                severity=tf.severity,
+                category="GENERIC_CALC",
+                location=loc,
+                message=tf.message,
+                suggestion=tf.suggestion,
+            ))
+    return out
 UNANSWERED_MIN_CHARS = 150
 
 
@@ -697,6 +720,7 @@ def audit_stem_document(
         )
 
     findings.extend(_audit_intra_table_arithmetic(doc.tables))
+    findings.extend(_audit_generic_tables(doc.tables, findings))
     findings.extend(_audit_cross_consistency(doc, profiles))
     findings.extend(_audit_sigfigs_typos_and_templates(doc, user_rules))
 

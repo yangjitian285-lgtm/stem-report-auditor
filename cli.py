@@ -201,6 +201,34 @@ def main() -> None:
     p_audit.add_argument("--html-out", default=None)
     p_audit.set_defaults(func=cmd_audit)
 
+    def cmd_table(a: argparse.Namespace) -> None:
+        from uniqueness_scorer.table_checker import check_table_text
+
+        text = Path(a.file).read_text(encoding=a.encoding)
+        res = check_table_text(text, caption=Path(a.file).name)
+        if a.json_out:
+            Path(a.json_out).write_text(json.dumps(res.to_dict(), ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"=== 汎用表検算: {a.file}（数値列 {len(res.numeric_columns)} / データ行 {res.data_rows}） ===")
+        if res.relations:
+            print("推定した計算関係:")
+            for r in res.relations:
+                print(f"  {r.target} = {r.formula}   [{r.matched_rows}/{r.checked_rows} 行一致]")
+        else:
+            print("列どうしの計算関係は推定できませんでした（測定値だけの表か、行数が少なすぎます）。")
+        issues = [f for f in res.findings if f.severity != "PASS"]
+        print(f"指摘 {len(issues)} 件:")
+        for f in issues:
+            where = (f"行{f.row} " if f.row else "") + (f.column or "")
+            print(f"  [{f.severity:8s}] {where}: {f.message}")
+            if f.suggestion:
+                print(f"             → {f.suggestion}")
+
+    p_table = sub.add_parser("table", help="CSV/TSV/Markdownの表を分野を問わず汎用検算")
+    p_table.add_argument("file", help="表ファイル（1行目が見出し）")
+    p_table.add_argument("--encoding", default="utf-8")
+    p_table.add_argument("--json-out", default=None)
+    p_table.set_defaults(func=cmd_table)
+
     args = parser.parse_args()
     args.func(args)
 
