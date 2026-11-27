@@ -15,6 +15,10 @@
 
 ---
 
+> **無料・ローカルで動きます。** APIキーもアカウントも不要で、レポートはあなたのパソコンの外に送信されません。Python を入れて「起動.bat」をダブルクリックすれば、ブラウザで使えるアプリが開きます（[アプリで使う](#アプリで使うダブルクリックで起動)）。OpenAI / Gemini は、独自性診断の比較用回答を自動で作りたいときだけの任意機能です。
+
+---
+
 ## What It Catches in 1 Second
 
 Word（`.docx`）を1ファイルそのまま投げると、**暗算ミスゼロの決定論的監査**と**データに埋もれた加点ポイント**を即座に返します。
@@ -91,6 +95,26 @@ claude mcp add -s user uniqueness-scorer -- python "/path/to/repo/cli.py" mcp
 
 ---
 
+## アプリで使う（ダブルクリックで起動）
+
+コマンドを打たなくても使えます。
+
+1. [python.org](https://www.python.org/downloads/) から Python 3.10 以上をインストールします（Windows はインストール画面で「Add python.exe to PATH」にチェック）。
+2. このリポジトリを [ZIP でダウンロード](https://github.com/yangjitian285-lgtm/stem-report-auditor/archive/refs/heads/main.zip)して展開します。
+3. **Windows は `起動.bat`、Mac は `start.command` をダブルクリック**します。初回だけ必要な部品（NumPy など）を自動でインストールし、ブラウザで画面が開きます。
+
+| タブ | できること |
+| :--- | :--- |
+| レポートを監査 | Word / PDF をドラッグ＆ドロップ。表の検算・表と本文の矛盾・有効数字・誤記・未回答を調べ、直す順のリストとグラフ付きの詳細レポートを表示 |
+| 表を検算 | Excel や Word の表をコピーして貼るだけ。数値から式を推定し、合わないセルを赤く表示 |
+| 独自性を診断 | 課題文・原稿・比較用のAI回答（3つ以上）を貼ると、文ごとの被り具合を表示 |
+
+- 動作はすべてローカルです。アプリは `127.0.0.1`（このパソコンの中）でだけ待ち受け、アップロードしたファイルは処理後に一時フォルダごと消します。
+- 終了するには、起動時に開いた黒いウィンドウを閉じます。
+- `python app.py` でも起動できます（`--port 9000` でポート変更）。
+
+---
+
 ## Quickstart (30 Seconds)
 
 ```bash
@@ -113,6 +137,8 @@ python cli.py table your_table.csv
 python cli.py score --task task.txt --draft draft.md --cohort cohort.json --html-out report.html
 ```
 
+> ここまでの機能はすべて**無料・オフライン**で動きます（`--provider local` が既定。APIキーは不要）。
+>
 > **PDF直接監査**を使いたい場合のみ `pip install pypdf` を追加してください。OpenAI / Gemini API を使う場合は `--provider openai` または `--provider gemini` を指定すると、仮想・量産型AI母集団の生成まで全自動化されます。
 
 ---

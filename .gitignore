@@ -32,3 +32,6 @@ Thumbs.db
 desktop.ini
 .vscode/
 .idea/
+
+# App UI (keep, despite *.html above)
+!uniqueness_scorer/webapp_ui.html
